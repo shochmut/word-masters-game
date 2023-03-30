@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  font-size: 50px;
+  border-bottom: solid black;
+}
+
+.game-board {
+  margin: 30px;
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+}
+
+.letter-box {
+  border: 5px double gray;
+  width: 50px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+}
