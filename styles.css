@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
 }
 
 .header {
@@ -19,8 +20,11 @@
 }
 
 .letter-box {
+  display: flex;
   border: 5px double gray;
   width: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 .row {
