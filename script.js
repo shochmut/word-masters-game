@@ -7,10 +7,11 @@ const WORDURL = 'https://words.dev-apis.com/word-of-the-day'
 const init = async(WORDURL) => {
   let letters = '';
   let row = 0
-  const promise = await fetch('https://words.dev-apis.com/word-of-the-day');
-  const processedResponse = await promise.json();
-  let word = processedResponse['word']
-  console.log(word)
+  //const promise = await fetch('https://words.dev-apis.com/word-of-the-day');
+  //const processedResponse = await promise.json();
+  //let wordOfDay = processedResponse['word'].toUpperCase()
+  let wordOfDay = 'SMITE'
+  console.log(wordOfDay)
 
   //enter answer function
   const commit = (answer) => {
@@ -18,7 +19,7 @@ const init = async(WORDURL) => {
       alert('not enough letters in guess')
     }
     else if (answer.length === 5) {
-      alert('guess')
+      checkLetters(letters)
       row += 1
       letters = ''
     }
@@ -47,6 +48,28 @@ const init = async(WORDURL) => {
     }
     reRender(letters, row)
   })
+
+  //check correct letters
+  const checkLetters = (letters) => {
+    //loop through to find letters in correct spot
+    for (i=0; i<letters.length; i++) {
+      if (letters[i] === wordOfDay[i]) {
+        display[i+row*ANSWERLENGTH].className += ' correct'
+      }
+      //loop through to check if letter present but in wrong spot
+      else if (wordOfDay.includes(letters[i])) {
+        display[i+row*ANSWERLENGTH].className += ' wrong-spot'
+      }
+    }
+    checkWord(letters)
+  }
+
+  //check if full word is correct
+  const checkWord = (letters) => {
+    if (letters === wordOfDay) {
+      alert('you won')
+    }
+  }
 }
 
 //check if letter function

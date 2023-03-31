@@ -28,3 +28,11 @@
   justify-content: space-around;
   height: 50px;
 }
+
+.correct {
+  border-color: green;
+}
+
+.wrong-spot {
+  border-color: rgb(200, 207, 13);
+}
