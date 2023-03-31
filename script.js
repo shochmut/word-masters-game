@@ -12,7 +12,7 @@ const init = async(WORDURL) => {
   //let wordOfDay = processedResponse['word'].toUpperCase()
   let wordOfDay = 'SMITE'
   console.log(wordOfDay)
-
+  var unusedLetters = wordOfDay
   //enter answer function
   const commit = (answer) => {
     if (answer.length < 5) {
@@ -42,7 +42,7 @@ const init = async(WORDURL) => {
       console.log(letters)
     }
     else if (event.key === 'Enter') {
-      console.log('enter')
+      unusedLetters = wordOfDay
       commit(letters)
       letters = ''
     }
@@ -53,11 +53,13 @@ const init = async(WORDURL) => {
   const checkLetters = (letters) => {
     //loop through to find letters in correct spot
     for (i=0; i<letters.length; i++) {
-      if (letters[i] === wordOfDay[i]) {
+      if (letters[i] === wordOfDay[i] && trackLetters(letters[i])) {
         display[i+row*ANSWERLENGTH].className += ' correct'
       }
-      //loop through to check if letter present but in wrong spot
-      else if (wordOfDay.includes(letters[i])) {
+    }
+    //loop through to check if letter present but in wrong spot
+    for (i=0; i<letters.length; i++) { 
+      if (wordOfDay.includes(letters[i]) && trackLetters(letters[i])) {
         display[i+row*ANSWERLENGTH].className += ' wrong-spot'
       }
     }
@@ -68,6 +70,17 @@ const init = async(WORDURL) => {
   const checkWord = (letters) => {
     if (letters === wordOfDay) {
       alert('you won')
+    }
+  }
+
+  //track the quantity of letters for wrong-spot designator
+  const trackLetters = (letter) => {
+    if (unusedLetters.includes(letter)) {
+      unusedLetters = unusedLetters.replace(letter, '')
+      return true
+    }
+    else {
+      return false
     }
   }
 }
