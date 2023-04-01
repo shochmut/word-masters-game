@@ -1,3 +1,8 @@
+//TODO add loading icon/spinner
+//TODO add win game animation
+//TODO after win game add button to ask to play again with new word
+//TODO modify invalid guess with flashing red boxes
+
 //initialize variables
 const display = document.querySelectorAll(".letter-box");
 const title = document.querySelectorAll('.game-board');
