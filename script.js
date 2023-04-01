@@ -1,5 +1,6 @@
 //initialize variables
 const display = document.querySelectorAll(".letter-box");
+const title = document.querySelectorAll('.game-board');
 const ANSWER_LENGTH = 5
 const WORD_URL = 'https://words.dev-apis.com/word-of-the-day'
 const VAL_URL = 'https://words.dev-apis.com/validate-word'
@@ -8,10 +9,9 @@ const VAL_URL = 'https://words.dev-apis.com/validate-word'
 const init = async(WORD_URL) => {
   let letters = '';
   let row = 0
-  //const promise = await fetch('https://words.dev-apis.com/word-of-the-day');
-  //const processedResponse = await promise.json();
-  //let wordOfDay = processedResponse['word'].toUpperCase()
-  let wordOfDay = 'SMITE'
+  const promise = await fetch('https://words.dev-apis.com/word-of-the-day');
+  const processedResponse = await promise.json();
+  let wordOfDay = processedResponse['word'].toUpperCase()
   console.log(wordOfDay)
   var unusedLetters = wordOfDay
   var valStatus = false
